@@ -169,7 +169,7 @@ namespace DemoCSDL
                     case "Procedure 3":
                         query = "SP3 'KH01'";
                         txtQuery.Text = "SP3 'KH01'";
-                        procedure3();
+                        procedure3("KH01");
                         select = 3;
                         break;
                     case "Procedure 4":
@@ -186,7 +186,7 @@ namespace DemoCSDL
                         break;
                     case "Procedure 6":
                         query = "SP6 '09', '2022'";
-                        procedure6();
+                        procedure6("9|2022");
                         select = 6;
                         break;
                     default:
@@ -203,7 +203,7 @@ namespace DemoCSDL
             }
         }
 
-        private void procedure3()
+        private void procedure3(string input)
         {
             panelResult.Show();
             SqlConnection conn = new SqlConnection(connectString);
@@ -218,7 +218,7 @@ namespace DemoCSDL
 
                 ParameterName = "@kh",
                 SqlDbType = SqlDbType.NVarChar,
-                Value = txtQuery.Text,
+                Value = input,
                 Direction = ParameterDirection.Input
 
             };
@@ -236,8 +236,11 @@ namespace DemoCSDL
             lblResProcedure.Text = "Tong tien: " + Convert.ToString(cmd.Parameters["@tong"].Value);
         }
 
-        private void procedure6()
+        private void procedure6(string input)
         {
+            string month, year;
+            month = input.Split('|')[0];
+            year = input.Split('|')[1];
             panelResult.Show();
             SqlConnection conn = new SqlConnection(connectString);
             SqlCommand cmd = new SqlCommand()
@@ -251,7 +254,7 @@ namespace DemoCSDL
 
                 ParameterName = "@month",
                 SqlDbType = SqlDbType.NVarChar,
-                Value = 09,
+                Value = month,
                 Direction = ParameterDirection.Input
 
             };
@@ -261,7 +264,7 @@ namespace DemoCSDL
 
                 ParameterName = "@year",
                 SqlDbType = SqlDbType.NVarChar,
-                Value = 2022,
+                Value = year,
                 Direction = ParameterDirection.Input
 
             };
@@ -396,6 +399,23 @@ namespace DemoCSDL
                 "\r\nFrom tChiTietHDB\r\nJoin tSanPham On tSanPham.MaSP = tChiTietHDB.MaSP\r\nJoin tHoaDonBan On tChiTietHDB.MaHDB = tHoaDonBan.MaHDB\r\nWhere MONTH(NgayBan) = @month And YEAR(NgayBan) = @year\r\nEND"));
             panelResult.Hide();
         }
+
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            if(select == 3)
+            {
+                procedure3(txtInput.Text);
+            }
+            if(select == 4)
+            {
+                procedure4(txtInput.Text);
+            }
+            if (select == 6)
+            {
+                procedure6(txtInput.Text);
+            }
+        }
+
         private void btnQuery_Click(object sender, EventArgs e)
         {
             lblSQL.Text = "Query: " + txtQuery.Text;

@@ -49,6 +49,9 @@
             this.btnFunction = new System.Windows.Forms.Button();
             this.btnProcedure = new System.Windows.Forms.Button();
             this.cbSQL = new System.Windows.Forms.ComboBox();
+            this.txtInput = new System.Windows.Forms.TextBox();
+            this.lblInput = new System.Windows.Forms.Label();
+            this.btnConfirm = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -229,6 +232,9 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnConfirm);
+            this.groupBox2.Controls.Add(this.lblInput);
+            this.groupBox2.Controls.Add(this.txtInput);
             this.groupBox2.Controls.Add(this.lblStatus);
             this.groupBox2.Controls.Add(this.lblResult);
             this.groupBox2.Controls.Add(this.btnView);
@@ -292,6 +298,34 @@
             this.cbSQL.TabIndex = 3;
             this.cbSQL.SelectedIndexChanged += new System.EventHandler(this.cbSQL_SelectedIndexChanged);
             // 
+            // txtInput
+            // 
+            this.txtInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtInput.Location = new System.Drawing.Point(86, 267);
+            this.txtInput.Name = "txtInput";
+            this.txtInput.Size = new System.Drawing.Size(149, 28);
+            this.txtInput.TabIndex = 5;
+            // 
+            // lblInput
+            // 
+            this.lblInput.AutoSize = true;
+            this.lblInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F);
+            this.lblInput.Location = new System.Drawing.Point(14, 275);
+            this.lblInput.Name = "lblInput";
+            this.lblInput.Size = new System.Drawing.Size(41, 16);
+            this.lblInput.TabIndex = 6;
+            this.lblInput.Text = "Input: ";
+            // 
+            // btnConfirm
+            // 
+            this.btnConfirm.Location = new System.Drawing.Point(252, 267);
+            this.btnConfirm.Name = "btnConfirm";
+            this.btnConfirm.Size = new System.Drawing.Size(76, 28);
+            this.btnConfirm.TabIndex = 7;
+            this.btnConfirm.Text = "Excute";
+            this.btnConfirm.UseVisualStyleBackColor = true;
+            this.btnConfirm.Click += new System.EventHandler(this.btnConfirm_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -344,6 +378,9 @@
         private System.Windows.Forms.Label lblResult;
         private System.Windows.Forms.Panel panelResult;
         private System.Windows.Forms.Label lblResProcedure;
+        private System.Windows.Forms.Button btnConfirm;
+        private System.Windows.Forms.Label lblInput;
+        private System.Windows.Forms.TextBox txtInput;
     }
 }
 
