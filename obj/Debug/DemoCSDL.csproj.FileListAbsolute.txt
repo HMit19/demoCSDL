@@ -1,0 +1,13 @@
+E:\StudySchool\SQL-Server\BTL\DemoCSDL\bin\Debug\DemoCSDL.exe.config
+E:\StudySchool\SQL-Server\BTL\DemoCSDL\bin\Debug\DemoCSDL.exe
+E:\StudySchool\SQL-Server\BTL\DemoCSDL\bin\Debug\DemoCSDL.pdb
+E:\StudySchool\SQL-Server\BTL\DemoCSDL\bin\Debug\FontAwesome.Sharp.dll
+E:\StudySchool\SQL-Server\BTL\DemoCSDL\obj\Debug\DemoCSDL.csproj.AssemblyReference.cache
+E:\StudySchool\SQL-Server\BTL\DemoCSDL\obj\Debug\DemoCSDL.csproj.SuggestedBindingRedirects.cache
+E:\StudySchool\SQL-Server\BTL\DemoCSDL\obj\Debug\DemoCSDL.Form1.resources
+E:\StudySchool\SQL-Server\BTL\DemoCSDL\obj\Debug\DemoCSDL.Properties.Resources.resources
+E:\StudySchool\SQL-Server\BTL\DemoCSDL\obj\Debug\DemoCSDL.csproj.GenerateResource.cache
+E:\StudySchool\SQL-Server\BTL\DemoCSDL\obj\Debug\DemoCSDL.csproj.CoreCompileInputs.cache
+E:\StudySchool\SQL-Server\BTL\DemoCSDL\obj\Debug\DemoCSDL.csproj.CopyComplete
+E:\StudySchool\SQL-Server\BTL\DemoCSDL\obj\Debug\DemoCSDL.exe
+E:\StudySchool\SQL-Server\BTL\DemoCSDL\obj\Debug\DemoCSDL.pdb
