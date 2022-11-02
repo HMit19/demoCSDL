@@ -20,7 +20,7 @@ namespace DemoCSDL
         Dictionary<string, Item> itemView = null;
         Dictionary<string, Item> itemFunction = null;
         Dictionary<string, Item> itemProcedure = null;
-        int option = 0;
+        int option = 0, select = 0;
         public Form1()
         {
             InitializeComponent();
@@ -155,27 +155,39 @@ namespace DemoCSDL
                 switch (cbSQL.SelectedItem)
                 {
                     case "Procedure 1":
-                        query = "DECLARE @tong INT \r\nEXEC SP3 N'KH01', @tong OUTPUT\r\nPRINT @tong";
+                        query = "SP1 'masp'";
+                        panelResult.Hide();
+                        fillData("Select * from [dbo].[tSanPham]");
+                        select = 1;
                         break;
                     case "Procedure 2":
-                        query = "DECLARE @Sl INT\r\nEXEC SP4 N'Phạm Minh Quân', @Sl OUTPUT\r\nPRINT @Sl";
-
+                        query = "SP2 'manv'";
+                        panelResult.Hide();
+                        fillData("Select * from [dbo].[tNhanVien]");
+                        select = 2;
                         break;
                     case "Procedure 3":
-                        query = "DECLARE @tong INT \r\nEXEC SP3 N'KH01', @tong OUTPUT\r\nPRINT @tong";
-
+                        query = "SP3 'KH01'";
+                        txtQuery.Text = "SP3 'KH01'";
+                        procedure3();
+                        select = 3;
                         break;
                     case "Procedure 4":
-                        query = "DECLARE @Sl INT\r\nEXEC SP4 N'Phạm Minh Quân', @Sl OUTPUT\r\nPRINT @Sl";
-
+                        txtQuery.Text = "SP4 'Phạm Minh Quân'";
+                        query = "SP4 'Phạm Minh Quân'";
+                        procedure4("Phạm Minh Quân");
+                        select = 4;
                         break;
                     case "Procedure 5":
-                        query = "exec SP5 @a";
-
+                        query = "SP5 '20'";
+                        panelResult.Hide();
+                        fillData("Select * from tSanPham");
+                        select = 5;
                         break;
                     case "Procedure 6":
-                        //query = "SP6";
-
+                        query = "SP6 '09', '2022'";
+                        procedure6();
+                        select = 6;
                         break;
                     default:
                         query = "Option";
@@ -189,6 +201,84 @@ namespace DemoCSDL
                     fillDataProcedure(query);
                 }
             }
+        }
+
+        private void procedure3()
+        {
+            panelResult.Show();
+            SqlConnection conn = new SqlConnection(connectString);
+            SqlCommand cmd = new SqlCommand()
+            {
+                Connection = conn,
+                CommandText = "SP3",
+                CommandType = CommandType.StoredProcedure,
+            };
+            SqlParameter paramTen = new SqlParameter
+            {
+
+                ParameterName = "@kh",
+                SqlDbType = SqlDbType.NVarChar,
+                Value = txtQuery.Text,
+                Direction = ParameterDirection.Input
+
+            };
+            SqlParameter paramSL = new SqlParameter
+            {
+                ParameterName = "@tong",
+                SqlDbType = SqlDbType.Int,
+                Direction = ParameterDirection.Output
+            };
+            cmd.Parameters.Add(paramTen);
+            cmd.Parameters.Add(paramSL);
+            conn.Open();
+            cmd.Connection = conn;
+            int i = cmd.ExecuteNonQuery();
+            lblResProcedure.Text = "Tong tien: " + Convert.ToString(cmd.Parameters["@tong"].Value);
+        }
+
+        private void procedure6()
+        {
+            panelResult.Show();
+            SqlConnection conn = new SqlConnection(connectString);
+            SqlCommand cmd = new SqlCommand()
+            {
+                Connection = conn,
+                CommandText = "SP6",
+                CommandType = CommandType.StoredProcedure,
+            };
+            SqlParameter paramMonth = new SqlParameter
+            {
+
+                ParameterName = "@month",
+                SqlDbType = SqlDbType.NVarChar,
+                Value = 09,
+                Direction = ParameterDirection.Input
+
+            };
+
+            SqlParameter paramYear = new SqlParameter
+            {
+
+                ParameterName = "@year",
+                SqlDbType = SqlDbType.NVarChar,
+                Value = 2022,
+                Direction = ParameterDirection.Input
+
+            };
+
+            SqlParameter paramDoanhthu = new SqlParameter
+            {
+                ParameterName = "@Doanhthu",
+                SqlDbType = SqlDbType.Int,
+                Direction = ParameterDirection.Output
+            };
+            cmd.Parameters.Add(paramMonth);
+            cmd.Parameters.Add(paramYear);
+            cmd.Parameters.Add(paramDoanhthu);
+            conn.Open();
+            cmd.Connection = conn;
+            int i = cmd.ExecuteNonQuery();
+            lblResProcedure.Text = "Doanh thu: " + Convert.ToString(cmd.Parameters["@Doanhthu"].Value);
         }
 
         private void fillDataProcedure(string query)
@@ -209,8 +299,41 @@ namespace DemoCSDL
         {
             string[] procedure = "Option procedure,Procedure 1,Procedure 2,Procedure 3,Procedure 4,Procedure 5,Procedure 6".Split(',');
             cbSQL.DataSource = procedure;
-            panelResult.Show();
+            //panelResult.Show();
             option = 3;
+        }
+
+        private void procedure4(string input)
+        {
+            panelResult.Show();
+            SqlConnection conn = new SqlConnection(connectString);
+            SqlCommand cmd = new SqlCommand()
+            {
+                Connection = conn,
+                CommandText = "SP4",
+                CommandType = CommandType.StoredProcedure,
+            };
+            SqlParameter paramTen = new SqlParameter
+            {
+
+                ParameterName = "@ten",
+                SqlDbType = SqlDbType.NVarChar,
+                Value = input,
+                Direction = ParameterDirection.Input
+
+            };
+            SqlParameter paramSL = new SqlParameter
+            {
+                ParameterName = "@Sl",
+                SqlDbType = SqlDbType.Int,
+                Direction = ParameterDirection.Output
+            };
+            cmd.Parameters.Add(paramTen);
+            cmd.Parameters.Add(paramSL);
+            conn.Open();
+            cmd.Connection = conn;
+            int i = cmd.ExecuteNonQuery();
+            lblResProcedure.Text = "So hoa don " + Convert.ToString(cmd.Parameters["@Sl"].Value);
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -278,6 +401,29 @@ namespace DemoCSDL
             lblSQL.Text = "Query: " + txtQuery.Text;
             fillData(txtQuery.Text);
             panelResult.Hide();
+
+            if (option == 3)
+            {
+                if (select == 1)
+                {
+                    fillData("Select * from [dbo].[tSanPham]");
+                }
+                if (select == 2)
+                {
+                    fillData("Select * from [dbo].[tNhanVien]");
+                }
+                if (select == 4)
+                {
+                    string q = txtQuery.Text;
+                    int leng = txtQuery.Text.Length;
+                    q = q.Substring(5, leng - 6);
+                    procedure4(q);
+                }
+                if (select == 5)
+                {
+                    fillData("Select * from tSanPham");
+                }
+            }
         }
     }
 }

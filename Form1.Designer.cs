@@ -32,12 +32,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.panelResult = new System.Windows.Forms.Panel();
+            this.lblResProcedure = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lblResult = new System.Windows.Forms.Label();
-            this.lblStatus = new System.Windows.Forms.Label();
             this.lblSQL = new System.Windows.Forms.Label();
             this.lblQuestion = new System.Windows.Forms.Label();
+            this.lblResult = new System.Windows.Forms.Label();
+            this.lblStatus = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.txtQuery = new System.Windows.Forms.TextBox();
@@ -47,17 +49,15 @@
             this.btnFunction = new System.Windows.Forms.Button();
             this.btnProcedure = new System.Windows.Forms.Button();
             this.cbSQL = new System.Windows.Forms.ComboBox();
-            this.panelResult = new System.Windows.Forms.Panel();
-            this.lblResProcedure = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            this.panelResult.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.panelResult.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -103,15 +103,35 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Result";
             // 
+            // panelResult
+            // 
+            this.panelResult.AutoScroll = true;
+            this.panelResult.BackColor = System.Drawing.Color.White;
+            this.panelResult.Controls.Add(this.lblResProcedure);
+            this.panelResult.Location = new System.Drawing.Point(6, 21);
+            this.panelResult.Name = "panelResult";
+            this.panelResult.Size = new System.Drawing.Size(864, 347);
+            this.panelResult.TabIndex = 1;
+            // 
+            // lblResProcedure
+            // 
+            this.lblResProcedure.AutoSize = true;
+            this.lblResProcedure.Font = new System.Drawing.Font("Malgun Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResProcedure.Location = new System.Drawing.Point(31, 35);
+            this.lblResProcedure.Name = "lblResProcedure";
+            this.lblResProcedure.Size = new System.Drawing.Size(0, 25);
+            this.lblResProcedure.TabIndex = 0;
+            // 
             // dataGridView1
             // 
             this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(6, 21);
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 18);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(864, 375);
+            this.dataGridView1.Size = new System.Drawing.Size(870, 352);
             this.dataGridView1.TabIndex = 0;
             // 
             // groupBox1
@@ -124,24 +144,6 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Message";
-            // 
-            // lblResult
-            // 
-            this.lblResult.AutoSize = true;
-            this.lblResult.Location = new System.Drawing.Point(14, 295);
-            this.lblResult.Name = "lblResult";
-            this.lblResult.Size = new System.Drawing.Size(51, 16);
-            this.lblResult.TabIndex = 4;
-            this.lblResult.Text = "Result: ";
-            // 
-            // lblStatus
-            // 
-            this.lblStatus.AutoSize = true;
-            this.lblStatus.Location = new System.Drawing.Point(14, 324);
-            this.lblStatus.Name = "lblStatus";
-            this.lblStatus.Size = new System.Drawing.Size(50, 16);
-            this.lblStatus.TabIndex = 3;
-            this.lblStatus.Text = "Status: ";
             // 
             // lblSQL
             // 
@@ -160,6 +162,24 @@
             this.lblQuestion.Size = new System.Drawing.Size(66, 16);
             this.lblQuestion.TabIndex = 1;
             this.lblQuestion.Text = "Question: ";
+            // 
+            // lblResult
+            // 
+            this.lblResult.AutoSize = true;
+            this.lblResult.Location = new System.Drawing.Point(14, 295);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(51, 16);
+            this.lblResult.TabIndex = 4;
+            this.lblResult.Text = "Result: ";
+            // 
+            // lblStatus
+            // 
+            this.lblStatus.AutoSize = true;
+            this.lblStatus.Location = new System.Drawing.Point(14, 324);
+            this.lblStatus.Name = "lblStatus";
+            this.lblStatus.Size = new System.Drawing.Size(50, 16);
+            this.lblStatus.TabIndex = 3;
+            this.lblStatus.Text = "Status: ";
             // 
             // panel3
             // 
@@ -272,24 +292,6 @@
             this.cbSQL.TabIndex = 3;
             this.cbSQL.SelectedIndexChanged += new System.EventHandler(this.cbSQL_SelectedIndexChanged);
             // 
-            // panelResult
-            // 
-            this.panelResult.BackColor = System.Drawing.Color.White;
-            this.panelResult.Controls.Add(this.lblResProcedure);
-            this.panelResult.Location = new System.Drawing.Point(6, 25);
-            this.panelResult.Name = "panelResult";
-            this.panelResult.Size = new System.Drawing.Size(859, 350);
-            this.panelResult.TabIndex = 1;
-            // 
-            // lblResProcedure
-            // 
-            this.lblResProcedure.AutoSize = true;
-            this.lblResProcedure.Font = new System.Drawing.Font("Microsoft Tai Le", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblResProcedure.Location = new System.Drawing.Point(28, 38);
-            this.lblResProcedure.Name = "lblResProcedure";
-            this.lblResProcedure.Size = new System.Drawing.Size(0, 23);
-            this.lblResProcedure.TabIndex = 0;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -305,6 +307,8 @@
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
+            this.panelResult.ResumeLayout(false);
+            this.panelResult.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -313,8 +317,6 @@
             this.groupBox3.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.panelResult.ResumeLayout(false);
-            this.panelResult.PerformLayout();
             this.ResumeLayout(false);
 
         }
